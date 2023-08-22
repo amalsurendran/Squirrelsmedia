@@ -35,7 +35,35 @@
 </head>
 
 <body>
-  
+  <style>
+    .my-carousel-progress {
+  background: #ccc;
+}
+
+
+.my-carousel-progress-bar {
+  background: greenyellow;
+  height: 2px;
+  transition: width 400ms ease;
+  width: 0;
+}
+  </style>
+
+  <script>
+  var splide = new Splide( '.splide' );
+var bar    = splide.root.querySelector( '.my-carousel-progress-bar' );
+
+
+// Updates the bar width whenever the carousel moves:
+splide.on( 'mounted move', function () {
+  var end  = splide.Components.Controller.getEnd() + 1;
+  var rate = Math.min( ( splide.index + 1 ) / end, 1 );
+  bar.style.width = String( 100 * rate ) + '%';
+} );
+
+
+splide.mount();
+  </script>
   <!--header section start -->
   <div class="header_section background_bg">
     <div class="container-fluid">
@@ -75,7 +103,25 @@
   </div>
   <!-- header section end -->
   <!-- team section start -->
-
+  <section class="splide" aria-label="...">
+    <div class="splide__track">
+      <ul class="splide__list">
+        <li class="splide__slide"><img src="images/1174925.webp" alt=""></li>
+        <li class="splide__slide"><img src="images/1174925.webp" alt=""></li>
+        <li class="splide__slide"><img src="images/1174925.webp" alt=""></li>
+        <li class="splide__slide"><img src="images/1174925.webp" alt=""></li>
+        <li class="splide__slide"><img src="images/1174925.webp" alt=""></li>
+        <li class="splide__slide"><img src="images/1174925.webp" alt=""></li>
+       
+      </ul>
+    </div>
+  
+  
+    <!-- Add the progress bar element -->
+    <div class="my-carousel-progress">
+      <div class="my-carousel-progress-bar"></div>
+    </div>
+  </section>
   <!-- team section start -->
   <!-- Newsletter section start -->
   <div class="newsletter_section">
